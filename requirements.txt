@@ -1,0 +1,7 @@
+pandas
+matplotlib
+streamlit
+seaborn
+sqlalchemy
+mysql-connector-python
+sqlalchemy
