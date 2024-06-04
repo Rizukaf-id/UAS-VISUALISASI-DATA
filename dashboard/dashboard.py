@@ -42,7 +42,7 @@ def visualize_distribution(data):
 
 # Fungsi untuk membaca data
 def load_data():
-    data = pd.read_csv('data/all_data.csv')  # Ganti dengan path file data Anda
+    data = pd.read_csv('data/all_data.csv')
     return data
 
 # Main function
