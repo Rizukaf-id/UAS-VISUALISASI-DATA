@@ -1,4 +1,4 @@
-Name, Year, Durasi(Menit), Rating, Rated 
+Name,Year,Durasi(Menit),Rating,Rated
 The Shawshank Redemption,1994,142,9.3,15
 The Godfather,1972,175,9.3,15
 The Dark Knight,2008,152,9.3,12A
@@ -72,7 +72,7 @@ Inglourious Basterds,2009,153,9.3,18
 The Dark Knight Rises,2012,164,9.3,12A
 Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb,1964,95,9.3,PG
 Coco,2017,105,9.3,PG
-Oldboy,2003,105,9.3,18
+Oldboy,2003,,9.3,18
 American Beauty,1999,122,9.3,18
 Amadeus,1984,160,9.3,PG
 Toy Story,1995,81,9.3,PG
@@ -97,7 +97,7 @@ The Hunt,2012,115,9.3,15
 A Space Odyssey,1968,149,9.3,U
 Reservoir Dogs,1992,99,9.3,18
 Ikiru,1952,143,9.3,PG
-Oppenheimer,2023,143,9.3,15
+Oppenheimer,2023,,9.3,15
 Lawrence of Arabia,1962,218,9.3,PG
 The Apartment,1960,125,9.3,PG
 Incendies,2010,131,9.3,15
@@ -129,7 +129,7 @@ Downfall,2004,156,9.3,15
 Dangal,2016,161,9.3,PG
 For a Few Dollars More,1965,132,9.3,15
 Batman Begins,2005,140,9.3,12A
-The Wolf of Wall Street,2013,140,9.3,18
+The Wolf of Wall Street,2013,,9.3,18
 Some Like It Hot,1959,121,9.3,A
 Green Book,2018,130,9.3,12A
 The Kid,1921,68,9.3,U
@@ -137,8 +137,8 @@ The Father,2020,97,9.3,12A
 Judgment at Nuremberg,1961,179,9.3,PG
 The Truman Show,1998,103,9.3,PG
 All About Eve,1950,138,9.3,PG
-Top Gun: Maverick,2022,130,9.3,12A
 Shutter Island,2010,138,9.3,15
+Top Gun: Maverick,2022,130,9.3,12A
 There Will Be Blood,2007,158,9.3,12A
 Casino,1995,178,9.3,18
 Jurassic Park,1993,127,9.3,PG
@@ -186,7 +186,7 @@ Blade Runner,1982,117,9.3,AA
 Before Sunrise,1995,101,9.3,15
 The Grand Budapest Hotel,2014,99,9.3,15
 Barry Lyndon,1975,185,9.3,PG
-Mad Max: Fury Road,2015,185,9.3,15
+Mad Max: Fury Road,2015,,9.3,15
 Gone Girl,2014,149,9.3,18
 Hacksaw Ridge,2016,139,9.3,15
 The Gold Rush,1925,95,9.3,U
@@ -198,7 +198,7 @@ The Deer Hunter,1978,183,9.3,X
 Monsters: Inc.,2001,92,9.3,U
 The General,1926,78,9.3,U
 On the Waterfront,1954,108,9.3,PG
-Sherlock Jr.,1924,108,9.3,U
+Sherlock Jr.,1924,,9.3,U
 How to Train Your Dragon,2010,98,9.3,PG
 Jaws,1975,124,9.3,PG
 The Third Man,1949,104,9.3,PG
@@ -211,13 +211,13 @@ Le Mans '66,2019,152,9.3,12A
 Tokyo Story,1953,136,9.3,U
 The Big Lebowski,1998,117,9.3,18
 Room,2015,118,9.3,15
-Rocky,1976,118,9.3,PG
+Rocky,1976,,9.3,PG
 The Seventh Seal,1957,96,9.3,PG
 Logan,2017,137,9.3,15
 Spotlight,2015,129,9.3,15
 Hotel Rwanda,2004,121,9.3,12A
 The Terminator,1984,107,9.3,18
-Platoon,1986,107,9.3,15
+Platoon,1986,,9.3,15
 La haine,1995,98,9.3,15
 The Passion of Joan of Arc,1928,110,9.3,PG
 Before Sunset,2004,80,9.3,15
