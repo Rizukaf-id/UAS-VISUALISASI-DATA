@@ -72,7 +72,7 @@ def comparison():
         avg_sold = tren_penjualan['SalesAmount'].mean()
         st.metric(label='Rata-rata Penjualan', value=avg_sold)
     with col3:
-        total_product = top_product['ProductKey'].sum()
+        total_product = top_product['ProductKey'].count()
         st.metric(label='Total Produk Terjual', value=total_product)
     
 
@@ -132,6 +132,7 @@ def composition():
     penjualan_subkategori['EnglishProductSubcategoryName'] = np.where(penjualan_subkategori['SalesAmount'] < 300000, 'others', penjualan_subkategori['EnglishProductSubcategoryName'])
     penjualan_subkategori = penjualan_subkategori.groupby('EnglishProductSubcategoryName').agg({'SalesAmount': 'sum'}).reset_index()
     penjualan_subkategori = penjualan_subkategori.sort_values('SalesAmount', ascending=False)
+    
     col1, col2 = st.columns(2)
     with col1:
         top_category = penjualan_kategori.sort_values('SalesAmount', ascending=False)
@@ -140,6 +141,7 @@ def composition():
     with col2:
         top_subcategory = penjualan_subkategori['EnglishProductSubcategoryName'].iloc[0]
         st.metric(label='Sub Kategori Terlaris', value=top_subcategory)
+   
     fig, ax = plt.subplots(1, 2, figsize=(16, 8))
     ax[0].pie(penjualan_kategori['SalesAmount'], labels=penjualan_kategori['EnglishProductCategoryName'], autopct='%1.1f%%')
     ax[0].set_title('Komposisi Penjualan per Kategori Produk', fontsize=18)
