@@ -7,6 +7,7 @@ import mysql.connector
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
+import plotly.express as px
 
 engine = None
 
@@ -76,20 +77,26 @@ def comparison():
         st.metric(label='Total Produk Terjual', value=total_product)
     
 
-    fig, ax = plt.subplots(figsize=(16, 8))
-    ax.plot(tren_penjualan['CalendarYear'], tren_penjualan['SalesAmount'], marker='o')
-    plt.title('Tren Penjualan Adventure Works', fontsize=32)
-    plt.xlabel('Tahun', fontsize=16)
-    plt.ylabel('Total Penjualan', fontsize=16)
-    st.pyplot(fig)
+    # fig, ax = plt.subplots(figsize=(16, 8))
+    # ax.plot(tren_penjualan['CalendarYear'], tren_penjualan['SalesAmount'], marker='o')
+    # plt.title('Tren Penjualan Adventure Works', fontsize=32)
+    # plt.xlabel('Tahun', fontsize=16)
+    # plt.ylabel('Total Penjualan', fontsize=16)
+    # st.pyplot(fig)
 
-    fig, ax = plt.subplots(figsize=(16, 8))
-    ax.bar(top_subcategory['EnglishProductSubcategoryName'], top_subcategory['SalesAmount'])
-    plt.title('Penjualan per Sub Kategori Produk', fontsize=32)
-    plt.xlabel('Sub Kategori Produk', fontsize=16)
-    plt.ylabel('Total Penjualan', fontsize=16)
-    plt.xticks(rotation=45)
-    st.pyplot(fig)
+    tab1, tab2 = st.tabs(['Tren Penjualan', 'Penjualan per Sub Kategori Produk'])
+    with tab1:
+        st.line_chart(tren_penjualan.set_index('CalendarYear'))
+
+    # fig, ax = plt.subplots(figsize=(16, 8))
+    # ax.bar(top_subcategory['EnglishProductSubcategoryName'], top_subcategory['SalesAmount'])
+    # plt.title('Penjualan per Sub Kategori Produk', fontsize=32)
+    # plt.xlabel('Sub Kategori Produk', fontsize=16)
+    # plt.ylabel('Total Penjualan', fontsize=16)
+    # plt.xticks(rotation=45)
+    # st.pyplot(fig)
+    with tab2:
+        st.bar_chart(top_subcategory.set_index('EnglishProductSubcategoryName'))
 
 def relationship():
     st.header('Relationship')
@@ -110,16 +117,25 @@ def relationship():
         # bottom_customer = bottom_customer['YearlyIncome']
         st.metric(label='Gaji Pelanggan dengan Pembelian Paling Sedikit', value=bottom_customer['YearlyIncome'])
 
-    fig, ax = plt.subplots(figsize=(16, 8))
-    ax.scatter(customer_buy['YearlyIncome'], customer_buy['SalesAmount'])
+    # fig, ax = plt.subplots(figsize=(16, 8))
+    # ax.scatter(customer_buy['YearlyIncome'], customer_buy['SalesAmount'])
 
-    plt.scatter(top_customer['YearlyIncome'], top_customer['SalesAmount'], color='red', s=100, label='Max Income')
-    plt.scatter(bottom_customer['YearlyIncome'], bottom_customer['SalesAmount'], color='black', s=100, label='Min Income')
+    # plt.scatter(top_customer['YearlyIncome'], top_customer['SalesAmount'], color='red', s=100, label='Max Income')
+    # plt.scatter(bottom_customer['YearlyIncome'], bottom_customer['SalesAmount'], color='black', s=100, label='Min Income')
     
-    plt.title('Hubungan antara Pendapatan Tahunan dengan Total Pembelian', fontsize=32)
-    plt.xlabel('Pendapatan Tahunan', fontsize=16)
-    plt.ylabel('Total Pembelian', fontsize=16)
-    st.pyplot(fig)
+    # plt.title('Hubungan antara Pendapatan Tahunan dengan Total Pembelian', fontsize=32)
+    # plt.xlabel('Pendapatan Tahunan', fontsize=16)
+    # plt.ylabel('Total Pembelian', fontsize=16)
+    # st.pyplot(fig)
+
+    min_val = customer_buy['SalesAmount'].min()
+    max_val = customer_buy['SalesAmount'].max()
+
+    customer_buy['color'] = 'mid'
+    customer_buy.loc[customer_buy['SalesAmount'] == min_val, 'color'] = 'min'
+    customer_buy.loc[customer_buy['SalesAmount'] == max_val, 'color'] = 'max'
+
+    st.scatter_chart(data=customer_buy, x='YearlyIncome', y='SalesAmount', color='color')
 
 def composition():
     st.header('Composition')
@@ -142,25 +158,39 @@ def composition():
         top_subcategory = penjualan_subkategori['EnglishProductSubcategoryName'].iloc[0]
         st.metric(label='Sub Kategori Terlaris', value=top_subcategory)
    
-    fig, ax = plt.subplots(1, 2, figsize=(16, 8))
-    ax[0].pie(penjualan_kategori['SalesAmount'], labels=penjualan_kategori['EnglishProductCategoryName'], autopct='%1.1f%%')
-    ax[0].set_title('Komposisi Penjualan per Kategori Produk', fontsize=18)
-    ax[1].pie(penjualan_subkategori['SalesAmount'], labels=penjualan_subkategori['EnglishProductSubcategoryName'], autopct='%1.1f%%')
-    ax[1].set_title('Komposisi Penjualan per Sub Kategori Produk', fontsize=18)
-    st.pyplot(fig)
+    # fig, ax = plt.subplots(1, 2, figsize=(16, 8))
+    # ax[0].pie(penjualan_kategori['SalesAmount'], labels=penjualan_kategori['EnglishProductCategoryName'], autopct='%1.1f%%')
+    # ax[0].set_title('Komposisi Penjualan per Kategori Produk', fontsize=18)
+    # ax[1].pie(penjualan_subkategori['SalesAmount'], labels=penjualan_subkategori['EnglishProductSubcategoryName'], autopct='%1.1f%%')
+    # ax[1].set_title('Komposisi Penjualan per Sub Kategori Produk', fontsize=18)
+    # st.pyplot(fig)
+    
+    tab1, tab2 = st.tabs(['Kategori Produk', 'Sub Kategori Produk'])
+
+    with tab1:
+        fig = px.pie(penjualan_kategori, values='SalesAmount', names='EnglishProductCategoryName', title='Komposisi Penjualan per Kategori Produk')
+        st.plotly_chart(fig)
+    with tab2:
+        fig = px.pie(penjualan_subkategori, values='SalesAmount', names='EnglishProductSubcategoryName', title='Komposisi Penjualan per Sub Kategori Produk')
+        st.plotly_chart(fig)
 
 def distribution():
     st.header('Distribution')
     st.subheader('Distribusi Penjualan per Bulan')
     tren_penjualan = fact_internet_sales.merge(dimention_time_df, left_on='OrderDateKey', right_on='TimeKey')
     
-    fig, ax = plt.subplots(figsize=(16, 8))
-    sns.histplot(tren_penjualan['MonthNumberOfYear'], bins=12, kde=True, ax=ax)
-    plt.title('Distribusi Penjualan per Bulan', fontsize=32)
-    plt.xlabel('Bulan', fontsize=16)
-    plt.ylabel('Total Penjualan', fontsize=16)
-    st.pyplot(fig)
+    # fig, ax = plt.subplots(figsize=(16, 8))
+    # sns.histplot(tren_penjualan['MonthNumberOfYear'], bins=12, kde=True, ax=ax)
+    # plt.title('Distribusi Penjualan per Bulan', fontsize=32)
+    # plt.xlabel('Bulan', fontsize=16)
+    # plt.ylabel('Total Penjualan', fontsize=16)
+    # st.pyplot(fig)
     
+    fig = px.histogram(tren_penjualan, x='MonthNumberOfYear', title='Distribusi Penjualan per Bulan')
+    st.plotly_chart(fig)
+
+
+
 def show_aw():
     st.title('Adventure Works Data Visualization Dashboard')
     st.subheader('Konteks')
