@@ -90,7 +90,7 @@ def comparison():
     with tab1:
         st.line_chart(tren_penjualan.set_index('CalendarYear'))
         stream_text =''' 
-Penjualan Adventure Works di Amerika Serikat mengalami tren positif dari tahun 2001 hingga 2014, dengan peningkatan paling signifikan terjadi antara 2003 dan 2005. Meskipun terdapat fluktuasi tahunan, seperti penurunan pada 2009 dan 2012, tren secara keseluruhan menunjukkan pertumbuhan yang stabil.
+Penjualan Adventure Works di Amerika Serikat mengalami tren positif dari tahun 2001 hingga 2004, dengan peningkatan paling signifikan terjadi antara 2001 hingga 2003. Tren secara keseluruhan menunjukkan pertumbuhan yang stabil.
                         '''
         with st.expander('Penjelasan'):
             st.write(stream_text)
