@@ -2,6 +2,8 @@
 
 Dikerjakan oleh Rizka Fiddiyansyah, Sistem Informasi, UPN Veteran Jawa Timur
 
+[Kunjungi tautan berikut untuk mengakses dashboard](https://21082010052-rizka.streamlit.app/)
+
 ## Deskripsi
 
 Proyek ini memadukan analisis dan visualisasi data dari dua sumber data yang berbeda
