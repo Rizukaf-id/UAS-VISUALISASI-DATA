@@ -11,8 +11,8 @@ Proyek ini memadukan analisis dan visualisasi data dari dua sumber data yang ber
 * **Data Adventure Works:** Dataset yang umum digunakan untuk pelatihan dan demonstrasi dalam bidang business intelligence.
 * **Data Top 250 Film IMDB:** Daftar film dengan rating tertinggi di Internet Movie Database.
 
-**Notebook analisis data Adventure Works** : notebook.ipynb
-**Notebook scrapping dan analisis data IMDB** : imdb-scrapper-uas.ipynb
+- **Notebook analisis data Adventure Works** : notebook.ipynb
+- **Notebook scrapping dan analisis data IMDB** : imdb-scrapper-uas.ipynb
 
 Hasil analisis dan visualisasi data dikemas dalam sebuah dashboard online yang interaktif, memungkinkan pengguna untuk menjelajahi dan memahami informasi dengan mudah.
 
