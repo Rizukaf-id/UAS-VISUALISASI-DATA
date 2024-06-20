@@ -89,6 +89,11 @@ def comparison():
     tab1, tab2 = st.tabs(['Tren Penjualan', 'Penjualan per Sub Kategori Produk'])
     with tab1:
         st.line_chart(tren_penjualan.set_index('CalendarYear'))
+        stream_text =''' 
+Penjualan Adventure Works di Amerika Serikat mengalami tren positif dari tahun 2001 hingga 2014, dengan peningkatan paling signifikan terjadi antara 2003 dan 2005. Meskipun terdapat fluktuasi tahunan, seperti penurunan pada 2009 dan 2012, tren secara keseluruhan menunjukkan pertumbuhan yang stabil.
+                        '''
+        with st.expander('Penjelasan'):
+            st.write(stream_text)
 
     # fig, ax = plt.subplots(figsize=(16, 8))
     # ax.bar(top_subcategory['EnglishProductSubcategoryName'], top_subcategory['SalesAmount'])
@@ -99,6 +104,8 @@ def comparison():
     # st.pyplot(fig)
     with tab2:
         st.bar_chart(top_subcategory.set_index('EnglishProductSubcategoryName'))
+        with st.expander('Penjelasan'):
+            st.write('Sub kategori produk yang paling banyak terjual adalah Road Bikes, diikuti oleh Mountain Bike dan Touring Bikes. Sub kategori lainnya, seperti Components, Helmets, dan Shoes, memiliki kontribusi penjualan yang lebih rendah dan digabungkan menjadi kategori "others".')
 
 def relationship():
     st.header('Relationship')
@@ -138,6 +145,8 @@ def relationship():
     customer_buy.loc[customer_buy['SalesAmount'] == max_val, 'color'] = 'max'
 
     st.scatter_chart(data=customer_buy, x='YearlyIncome', y='SalesAmount', color='color')
+    with st.expander('Penjelasan'):
+        st.write('Grafik di atas menunjukkan hubungan antara pendapatan tahunan pelanggan dengan total pembelian. Terdapat dua pelanggan yang menonjol, yaitu pelanggan dengan total pembelian terbanyak (ditandai dengan warna biru muda) dan pelanggan dengan total pembelian paling sedikit (ditandai dengan warna merah muda).')
 
 def composition():
     st.header('Composition')
@@ -172,9 +181,13 @@ def composition():
     with tab1:
         fig = px.pie(penjualan_kategori, values='SalesAmount', names='EnglishProductCategoryName', title='Komposisi Penjualan per Kategori Produk')
         st.plotly_chart(fig)
+        with st.expander('Penjelasan'):
+            st.write('Kategori produk yang paling banyak terjual adalah Bikes, sedangkan yang kategori lainnya relatif sangat kecil tingkat penjualannya.')
     with tab2:
         fig = px.pie(penjualan_subkategori, values='SalesAmount', names='EnglishProductSubcategoryName', title='Komposisi Penjualan per Sub Kategori Produk')
         st.plotly_chart(fig)
+        with st.expander('Penjelasan'):
+            st.write('Sub kategori produk yang paling banyak terjual adalah Road Bikes, diikuti oleh Mountain Bike dan Touring Bikes. Sub kategori lainnya, seperti Components, Helmets, dan Shoes, memiliki kontribusi penjualan yang lebih rendah dan digabungkan menjadi kategori "others".')
 
 def distribution():
     st.header('Distribution')
@@ -190,6 +203,8 @@ def distribution():
     
     fig = px.histogram(tren_penjualan, x='MonthNumberOfYear', title='Distribusi Penjualan per Bulan')
     st.plotly_chart(fig)
+    with st.expander('Penjelasan'):
+        st.write('Penjualan Adventure Works di Amerika Serikat cenderung stabil sepanjang tahun, dengan fluktuasi yang relatif kecil. Bulan-bulan tertentu, seperti Juli hingga November, memiliki total penjualan yang lebih rendah dibandingkan bulan lainnya. Sementara itu, bulan-bulan lain, memiliki total penjualan yang lebih tinggi.')
 
 
 
