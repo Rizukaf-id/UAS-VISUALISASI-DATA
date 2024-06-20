@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 import os
 import plotly.express as px
 
+# st.set_page_config(initial_sidebar_state="collapsed", page_title="052-Rizka F")
+
 engine = None
 
 def open_connection():
